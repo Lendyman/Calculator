@@ -1,0 +1,316 @@
+// ---------- Theme1
+$defaultText1: rgb(255, 255, 255);
+$background1: rgb(58, 71, 100);
+$backgroundControl1: rgb(35, 44, 67);
+$backgroundScreen1: rgb(24, 32, 52);
+// keys opt
+$keyOptBackground1: rgb(99, 112, 151);
+$keyOptShadow1: rgb(64, 78, 114);
+$keyOptText1: rgb(255, 255, 255);
+// keys result
+$keyResultBackground1: rgb(208, 63, 47);
+$keyResultShadow1: rgb(147, 38, 26);
+$keyResultText1: rgb(255, 255, 255);
+// keys
+$keyBackground1: rgb(234, 227, 220);
+$keyShadow1: rgb(180, 165, 151);
+$keyText1: rgb(68, 75, 90);
+// ---------- Theme2
+$defaultText2: rgb(27, 36, 40);
+$background2: rgb(230, 230, 230);
+$backgroundControl2: rgb(209, 204, 204);
+$backgroundScreen2: rgb(237, 237, 237);
+// keys opt
+$keyOptBackground2: rgb(55, 127, 134);
+$keyOptShadow2: rgb(27, 95, 101);
+$keyOptText2: white;
+// keys result
+$keyResultBackground2: rgb(208, 63, 47);
+$keyResultShadow2: rgb(147, 38, 26);
+$keyResultText2: white;
+// keys
+$keyBackground2: rgb(229, 228, 225);
+$keyShadow2: rgb(166, 157, 145);
+$keyText2: rgb(68, 75, 90);
+// ---------- Theme3
+$defaultText3: rgb(255, 255, 2);
+$background3: rgb(22, 6, 40);
+$backgroundControl3: rgb(29, 9, 52);
+$backgroundScreen3: rgb(29, 9, 52);
+;
+// keys opt
+$keyOptBackground3: hsl(281, 89%, 26%);
+$keyOptShadow3: rgb(188, 21, 244);
+$keyOptText3: white;
+// keys result
+$keyResultBackground3: rgb(0, 224, 209);
+$keyResultShadow3: rgb(108, 249, 242);
+$keyResultText3: rgb(27, 36, 40);
+// keys
+$keyBackground3: rgb(52, 28, 79);
+$keyShadow3: rgb(135, 28, 156);
+$keyText3: rgb(255, 229, 61);
+$borderRadius: 10px;
+@font-face {
+    font-family: 'Spartan';
+    src: url('../font/Spartan-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'SpartanM';
+    src: url('../font/Spartan-Medium.ttf');
+}
+
+* {
+    font-family: 'Spartan', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(44, 44, 44);
+}
+
+.calc {
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    margin: 0 auto;
+    padding: 2rem;
+    @media only screen and (min-width: 1440px) {
+        width: 537px;
+    }
+    &__headTheme {
+        display: flex;
+        flex-direction: row;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    &__logo {
+        flex: 1;
+    }
+    &__theme {
+        text-transform: uppercase;
+        font-size: 0.6rem;
+        flex-basis: 50px;
+        align-self: flex-end;
+    }
+    &__switcher {
+        flex-basis: 64px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    &__switcherBtn {
+        background: none;
+        border: none;
+        font-size: .6rem;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &__switcherBtns {
+        display: flex;
+        justify-content: space-around;
+    }
+    &__switcherSlide {
+        height: 20px;
+        border-radius: 12px;
+        padding: 2px 5px;
+        display: flex;
+        align-items: center;
+        &--1 {
+            justify-content: flex-start;
+        }
+        &--2 {
+            justify-content: center;
+        }
+        &--3 {
+            justify-content: flex-end;
+        }
+    }
+    &__selectedTheme {
+        height: 14px;
+        width: 14px;
+        border-radius: 50%;
+    }
+    &__result {
+        font-size: 2rem;
+        border-radius: $borderRadius;
+        padding: 1.7rem;
+        text-align: right;
+        overflow-x: hidden;
+        margin-bottom: 2rem;
+    }
+    &__numPad {
+        font-family: 'SpartanM';
+        font-size: 1.6rem;
+        border-radius: $borderRadius;
+        padding: 1.8rem;
+        display: grid;
+        font-family: "SpartanM" !important;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20%;
+        grid-template-rows: 65px 65px 65px 65px 65px;
+        column-gap: 20px;
+        row-gap: 20px;
+    }
+    .pad2 {
+        font-family: 'SpartanM' !important;
+    }
+    &__key {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-color: gray;
+        border-radius: 6px;
+        box-shadow: 0px 4px 0px red;
+        padding-top: 8px;
+        &--opt {
+            background-color: rgb(94, 91, 91);
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+        &--eql {
+            background-color: rgb(139, 96, 96);
+            grid-column: 3 / span 2;
+        }
+        &--reset {
+            grid-column: 1 / span 2;
+        }
+        &:hover {
+            background-color: black;
+            cursor: pointer;
+        }
+    }
+    &--theme1 {
+        background-color: $background1;
+        color: $defaultText1;
+        transition: color .2s ease-in-out, background-color .2s ease-in-out;
+        .calc {
+            &__switcherSlide {
+                background-color: $backgroundControl1;
+                transition: background-color .2s ease-in-out;
+            }
+            &__selectedTheme {
+                background-color: $keyResultBackground1;
+                transition: background-color .2s ease-in-out;
+            }
+            &__result {
+                color: $defaultText1;
+                background-color: $backgroundScreen1;
+                transition: color .2s ease-in-out, background-color .2s ease-in-out;
+            }
+            &__key {
+                color: $keyText1;
+                background-color: $keyBackground1;
+                box-shadow: $keyShadow1 0px 4px 0px;
+                transition: color .2s ease-in-out, background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+                &--opt {
+                    color: $keyOptText1;
+                    background-color: $keyOptBackground1;
+                    box-shadow: $keyOptShadow1 0px 4px 0px;
+                    transition: color .2s ease-in-out, background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+                }
+                &--eql {
+                    color: $keyResultText1;
+                    background-color: $keyResultBackground1;
+                    box-shadow: $keyResultShadow1 0px 4px 0px;
+                    transition: color .2s ease-in-out, background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+                }
+            }
+            &__numPad {
+                background-color: $backgroundControl1;
+                transition: background-color .2s ease-in-out;
+            }
+        }
+    }
+    &--theme2 {
+        background-color: $background2;
+        color: $defaultText2;
+        transition: color .2s ease-in-out, background-color .2s ease-in-out;
+        .calc {
+            &__switcherSlide {
+                background-color: $backgroundControl2;
+                transition: background-color .2s ease-in-out;
+            }
+            &__selectedTheme {
+                background-color: $keyResultBackground2;
+                transition: background-color .2s ease-in-out;
+            }
+            &__result {
+                color: $defaultText2;
+                background-color: $backgroundScreen2;
+                transition: color .2s ease-in-out, background-color .2s ease-in-out;
+            }
+            &__key {
+                color: $keyText2;
+                background-color: $keyBackground2;
+                box-shadow: $keyShadow2 0px 4px 0px;
+                transition: color .2s ease-in-out, background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+                &--opt {
+                    color: $keyOptText2;
+                    background-color: $keyOptBackground2;
+                    box-shadow: $keyOptShadow2 0px 4px 0px;
+                    transition: color .2s ease-in-out, background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+                }
+                &--eql {
+                    color: $keyResultText2;
+                    background-color: $keyResultBackground2;
+                    box-shadow: $keyResultShadow2 0px 4px 0px;
+                    transition: color .2s ease-in-out, background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+                }
+            }
+            &__numPad {
+                background-color: $backgroundControl2;
+                transition: background-color .2s ease-in-out;
+            }
+        }
+    }
+    &--theme3 {
+        background-color: $background3;
+        color: $defaultText3;
+        transition: color .2s ease-in-out, background-color .2s ease-in-out;
+        .calc {
+            &__switcherSlide {
+                background-color: $backgroundControl3;
+                transition: background-color .2s ease-in-out;
+            }
+            &__selectedTheme {
+                background-color: $keyResultBackground3;
+                transition: background-color .2s ease-in-out;
+            }
+            &__result {
+                color: $defaultText3;
+                background-color: $backgroundScreen3;
+                transition: color .2s ease-in-out, background-color .2s ease-in-out;
+            }
+            &__key {
+                color: $keyText3;
+                background-color: $keyBackground3;
+                box-shadow: $keyShadow3 0px 4px 0px;
+                transition: color .2s ease-in-out, background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+                &--opt {
+                    color: $keyOptText3;
+                    background-color: $keyOptBackground3;
+                    box-shadow: $keyOptShadow3 0px 4px 0px;
+                    transition: color .2s ease-in-out, background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+                }
+                &--eql {
+                    color: $keyResultText3;
+                    background-color: $keyResultBackground3;
+                    box-shadow: $keyResultShadow3 0px 4px 0px;
+                    transition: color .2s ease-in-out, background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+                }
+            }
+            &__numPad {
+                background-color: $backgroundControl3;
+                transition: background-color .2s ease-in-out;
+            }
+        }
+    }
+}
+
+body {
+    background-color: hsl(0, 0%, 0%);
+}

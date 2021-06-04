@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+      color: gray;
+    }
+
+    .attribution a {
+      color: hsl(228, 37%, 59%);
+    }
+  </style>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div id="calculator" class="calc calc--theme1">
+    <div class="calc__headTheme">
+      <div class="calc__logo">
+        calc
+      </div>
+      <div class="calc__theme">
+        Theme
+      </div>
+      <div class="calc__switcher">
+        <div class="calc__switcherBtns">
+          <div class="calc__switcherBtn" onclick="changeTheme(1)">1</div>
+          <div class="calc__switcherBtn" onclick="changeTheme(2)">2</div>
+          <div class="calc__switcherBtn" onclick="changeTheme(3)">3</div>
+        </div>
+        <div class="calc__switcherSlide" id="switcher">
+          <div class="calc__selectedTheme"></div>
+        </div>
+      </div>
+    </div>
+    <div class="calc__result" id="screen">399,981</div>
+    <div class="calc__numPad">
+
+      <div class="calc__key" onclick="addKey(7);">7</div>
+      <div class="calc__key" onclick="addKey(8);">8</div>
+      <div class="calc__key" onclick="addKey(9);">9</div>
+      <div class="calc__key calc__key--opt" onclick="delKey();">del</div>
+      <div class="calc__key" onclick="addKey(4);">4</div>
+      <div class="calc__key" onclick="addKey(5);">5</div>
+      <div class="calc__key" onclick="addKey(6);">6</div>
+      <div class="calc__key" onclick="addKey('+');">+</div>
+      <div class="calc__key" onclick="addKey(1);">1</div>
+      <div class="calc__key" onclick="addKey(2);">2</div>
+      <div class="calc__key" onclick="addKey(3);">3</div>
+      <div class="calc__key" onclick="addKey('-');">-</div>
+      <div class="calc__key" onclick="addKey('.');">.</div>
+      <div class="calc__key" onclick="addKey(0);">0</div>
+      <div class="calc__key" onclick="addKey('/');">/</div>
+      <div class="calc__key" onclick="addKey('*');">*</div>
+      <div class="calc__key calc__key--opt  calc__key--reset" onclick="reset();">Reset</div>
+      <div class="calc__key calc__key--eql" onclick="result();">=</div>
+    </div>
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Jorge Lendy</a>.
+  </div>
+  <script>
+    var str = '';
+    var scr = document.getElementById('screen');
+    var thm = document.getElementById("calculator");
+    var swt = document.getElementById("switcher");
+
+    function addKey(x) {
+      /*
+      if ('-+/*'.lastIndexOf(x) != -1) {
+        console.log(str.length, str.substring((str.length, str.length + 1)));
+      }*/
+
+      if (str != '') {
+        str = str + '' + x;
+      } else {
+        str = x + "";
+      }
+      scr.innerText = str;
+    }
+
+    function validate(v) {
+    }
+
+    function result() {
+      str = eval(str);
+      scr.innerText = str;
+    }
+
+    function reset() {
+      str = '';
+      scr.innerText = '0';
+    }
+
+    function delKey() {
+      str = str.substring(0, str.length - 1);
+      console.log(str.length, str, typeof str);
+      if (str.length > 0) {
+        scr.innerText = str;
+      } else {
+        scr.innerText = '0';
+      }
+    }
+    function changeTheme(d) {
+      thm.className = '';
+      thm.classList.add("calc",  "calc--theme" + d);
+
+      swt.className = '';
+      swt.classList.add("calc__switcherSlide",  "calc__switcherSlide--" + d);
+    }
+  </script>
+</body>
+
+</html>
